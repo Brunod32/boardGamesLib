@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nombre de joueurs{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mt-5 mb-5">Créer un nouveau nombre de joueurs</h1>
+
+    <div class="container">
+        {{ include('nb_player/_form.html.twig') }}
+
+        <a href="{{ path('app_nb_player_index') }}">Retour à la liste</a>
+    </div>
+{% endblock %}

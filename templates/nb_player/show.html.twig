@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NbPlayer{% endblock %}
+
+{% block body %}
+    <h1>NbPlayer</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ nb_player.id }}</td>
+            </tr>
+            <tr>
+                <th>NbPlayers</th>
+                <td>{{ nb_player.nbPlayers }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_nb_player_index') }}">back to list</a>
+
+    <a href="{{ path('app_nb_player_edit', {'id': nb_player.id}) }}">edit</a>
+
+    {{ include('nb_player/_delete_form.html.twig') }}
+{% endblock %}

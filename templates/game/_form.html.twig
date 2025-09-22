@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+<div class="formDiv">
+    {{ form_row(form.name, { 'label': 'Nom du jeu'}) }}
+    {{ form_row(form.duration, { 'label': 'Durée de la partie (en minutes)'}) }}
+    {{ form_row(form.lastDatePlayed, { 'label': 'Dernière date jouée'}) }}
+    {{ form_row(form.category, { 'label': 'Categorie'}) }}
+    {{ form_row(form.nbPlayers, { 'label': 'Nombre de joueurs'}) }}
+    {{ form_row(form.note, { 'label': 'Note (de 1 à 10)'}) }}
+</div>
+    <button type="button" class="btn btn-outline-primary">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: GameRepository::class)]
 class Game
@@ -25,23 +26,21 @@ class Game
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $lastDatePlayed = null;
 
-    #[ORM\ManyToOne(inversedBy: 'nbPlayers')]
-    private ?Note $note = null;
+    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
+    #[Assert\Range(
+        min: 0,
+        max: 10,
+        notInRangeMessage: 'La note doit être comprise entre {{ min }} et {{ max }}.',
+    )]
+    private ?int $note = null;
 
     #[ORM\ManyToOne(inversedBy: 'games')]
     #[ORM\JoinColumn(nullable: false)]
     private ?NbPlayer $nbPlayers = null;
 
-    /**
-     * @var Collection<int, Category>
-     */
-    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'games')]
-    private Collection $category;
-
-    public function __construct()
-    {
-        $this->category = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(targetEntity: Category::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
 
     public function getId(): ?int
     {
@@ -84,12 +83,12 @@ class Game
         return $this;
     }
 
-    public function getNote(): ?Note
+    public function getNote(): ?int
     {
         return $this->note;
     }
 
-    public function setNote(?Note $note): static
+    public function setNote(?int $note): static
     {
         $this->note = $note;
 
@@ -108,26 +107,14 @@ class Game
         return $this;
     }
 
-    /**
-     * @return Collection<int, Category>
-     */
-    public function getCategory(): Collection
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
 
-    public function addCategory(Category $category): static
+    public function setCategory(?Category $category): static
     {
-        if (!$this->category->contains($category)) {
-            $this->category->add($category);
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(Category $category): static
-    {
-        $this->category->removeElement($category);
+        $this->category = $category;
 
         return $this;
     }

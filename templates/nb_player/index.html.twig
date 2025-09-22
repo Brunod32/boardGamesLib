@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NbPlayer index{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mt-5 mb-5">NbPlayer index</h1>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre de joueurs</th>
+                    {# <th>actions</th> #}
+                </tr>
+            </thead>
+            <tbody>
+            {% for nb_player in nb_players %}
+                <tr>
+                    {# <td>{{ nb_player.id }}</td> #}
+                    <td>{{ nb_player.nbPlayers }}</td>
+                    {# <td>
+                        <a href="{{ path('app_nb_player_show', {'id': nb_player.id}) }}">show</a>
+                        <a href="{{ path('app_nb_player_edit', {'id': nb_player.id}) }}">edit</a>
+                    </td> #}
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Aucun enregistrement trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('app_nb_player_new') }}" class="btn btn-outline-primary">Créer</a>
+    </div>
+
+{% endblock %}
