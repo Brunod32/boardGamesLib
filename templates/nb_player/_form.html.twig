@@ -1,4 +1,4 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+        {{ form_row(form.nbPlayers, {'label': 'Nombre de joueurs'}) }}
     <button type="button" class="btn btn-outline-primary mt-5 mb-5">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

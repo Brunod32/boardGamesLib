@@ -27,10 +27,12 @@ class GameType extends AbstractType
             ])
             ->add('nbPlayers', EntityType::class, [
                 'class' => NbPlayer::class,
+                'placeholder' => 'Sélectionnez un nombre de joueurs',
                 'choice_label' => 'id',
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
+                'placeholder' => 'Sélectionnez une catégorie',
                 'choice_label' => 'id',
             ])
         ;

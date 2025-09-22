@@ -3,7 +3,7 @@
 {% block title %}NbPlayer{% endblock %}
 
 {% block body %}
-    <h1>NbPlayer</h1>
+    <h1>Nmbre de joueurs</h1>
 
     <table class="table">
         <tbody>
@@ -12,15 +12,15 @@
                 <td>{{ nb_player.id }}</td>
             </tr>
             <tr>
-                <th>NbPlayers</th>
+                <th>Nombre de joueurs</th>
                 <td>{{ nb_player.nbPlayers }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_nb_player_index') }}">back to list</a>
+    <a href="{{ path('app_nb_player_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_nb_player_edit', {'id': nb_player.id}) }}">edit</a>
+    <a href="{{ path('app_nb_player_edit', {'id': nb_player.id}) }}">Modifier</a>
 
     {{ include('nb_player/_delete_form.html.twig') }}
 {% endblock %}
