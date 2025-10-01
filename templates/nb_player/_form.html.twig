@@ -1,4 +1,13 @@
 {{ form_start(form) }}
-        {{ form_row(form.nbPlayers, {'label': 'Nombre de joueurs'}) }}
-    <button type="button" class="btn btn-outline-primary mt-5 mb-5">{{ button_label|default('Enregistrer') }}</button>
+<div class="containerForm mx-auto" style="max-width: 700px;">
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">{{ form_label(form.minPlayers, 'Nombre minimum de joueurs') }}</label>
+        <div class="col-md-8">{{ form_widget(form.minPlayers) }}</div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">{{ form_label(form.maxPlayers, 'Nombre maximum de joueurs') }}</label>
+        <div class="col-md-8">{{ form_widget(form.maxPlayers) }}</div>
+    </div>
+    <button type="submit" class="btn btn-outline-primary mt-5 mb-5">{{ button_label|default('Enregistrer') }}</button>
+</div>
 {{ form_end(form) }}

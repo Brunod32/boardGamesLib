@@ -16,6 +16,11 @@ class Category
     #[ORM\Column(length: 50)]
     private ?string $name = null;
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

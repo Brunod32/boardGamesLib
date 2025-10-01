@@ -3,6 +3,7 @@
 {% block title %}Nombre de joueurs{% endblock %}
 
 {% block body %}
+    {% include 'navbar.html.twig' %}
     <h1 class="text-center mt-5 mb-5">Liste des nombres de joueurs</h1>
 
     <div class="container">
@@ -17,12 +18,14 @@
             <tbody>
             {% for nb_player in nb_players %}
                 <tr>
-                    {# <td>{{ nb_player.id }}</td> #}
-                    <td>{{ nb_player.nbPlayers }}</td>
-                    {# <td>
-                        <a href="{{ path('app_nb_player_show', {'id': nb_player.id}) }}">show</a>
-                        <a href="{{ path('app_nb_player_edit', {'id': nb_player.id}) }}">edit</a>
-                    </td> #}
+                    <td>{{ nb_player.id }}</td>
+                    <td>
+                        {% if nb_player.maxPlayers and nb_player.minPlayers != nb_player.maxPlayers %}
+                            {{ nb_player.minPlayers }}-{{ nb_player.maxPlayers }} joueurs
+                        {% else %}
+                            {{ nb_player.minPlayers }} joueurs
+                        {% endif %}
+                    </td>
                 </tr>
             {% else %}
                 <tr>

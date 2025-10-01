@@ -3,9 +3,12 @@
 {% block title %}Ajouter un jeu{% endblock %}
 
 {% block body %}
+    {% include 'navbar.html.twig' %}
     <h1 class="text-center mt-5 mb-5">Ajouter un jeu</h1>
 
-    {{ include('game/_form.html.twig') }}
+    <div class="container">
+        <a href="{{ path('app_game_index') }}" class="text-decoration-none">Retour à la liste</a>
+        {{ include('game/_form.html.twig') }}
 
-    <a href="{{ path('app_game_index') }}">Retour à la liste</a>
+    </div>
 {% endblock %}

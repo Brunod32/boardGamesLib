@@ -3,11 +3,12 @@
 {% block title %}Ajouter une catégorie{% endblock %}
 
 {% block body %}
+    {% include 'navbar.html.twig' %}
     <h1 class="text-center mt-5 mb-5">Créer une nouvelle catégorie</h1>
 
     <div class="container">
+        <a href="{{ path('app_category_index') }}">Retour à la liste</a>
         {{ include('category/_form.html.twig') }}
 
-        <a href="{{ path('app_category_index') }}">Retour à la liste</a>
     </div>
 {% endblock %}

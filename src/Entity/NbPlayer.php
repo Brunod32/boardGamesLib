@@ -17,7 +17,10 @@ class NbPlayer
     private ?int $id = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $nbPlayers = null;
+    private ?int $minPlayers = null;
+
+    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
+    private ?int $maxPlayers = null;
 
     /**
      * @var Collection<int, Game>
@@ -29,22 +32,50 @@ class NbPlayer
     {
         $this->games = new ArrayCollection();
     }
+    
+    public function __toString()
+    {
+        return $this->getPlayersLabel();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNbPlayers(): ?int
+    public function getMinPlayers(): ?int
     {
-        return $this->nbPlayers;
+        return $this->minPlayers;
     }
 
-    public function setNbPlayers(int $nbPlayers): static
+    public function setMinPlayers(int $minPlayers): static
     {
-        $this->nbPlayers = $nbPlayers;
+        $this->minPlayers = $minPlayers;
 
         return $this;
+    }
+
+    public function getMaxPlayers(): ?int
+    {
+        return $this->maxPlayers;
+    }
+
+    public function setMaxPlayers(?int $maxPlayers): static
+    {
+        $this->maxPlayers = $maxPlayers;
+
+        return $this;
+    }
+
+    /**
+     * Retourne une représentation textuelle du nombre de joueurs.
+     */
+    public function getPlayersLabel(): string
+    {
+        if ($this->maxPlayers && $this->minPlayers !== $this->maxPlayers) {
+            return $this->minPlayers . '-' . $this->maxPlayers . ' joueurs';
+        }
+        return $this->minPlayers . ' joueurs';
     }
 
     /**

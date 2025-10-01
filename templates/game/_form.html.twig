@@ -1,11 +1,29 @@
 {{ form_start(form) }}
-<div class="formDiv">
-    {{ form_row(form.name, { 'label': 'Nom du jeu'}) }}
-    {{ form_row(form.duration, { 'label': 'Durée de la partie (en minutes)'}) }}
-    {{ form_row(form.lastDatePlayed, { 'label': 'Dernière date jouée'}) }}
-    {{ form_row(form.category, { 'label': 'Categorie'}) }}
-    {{ form_row(form.nbPlayers, { 'label': 'Nombre de joueurs'}) }}
-    {{ form_row(form.note, { 'label': 'Note (de 1 à 10)'}) }}
+<div class="containerForm mx-auto">
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">{{ form_label(form.name, 'Nom du jeu') }}</label>
+        <div class="col-md-8">{{ form_widget(form.name) }}</div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">{{ form_label(form.duration, 'Durée de la partie (en minutes)') }}</label>
+        <div class="col-md-8">{{ form_widget(form.duration) }}</div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">{{ form_label(form.lastDatePlayed, 'Dernière date jouée') }}</label>
+        <div class="col-md-8">{{ form_widget(form.lastDatePlayed) }}</div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">{{ form_label(form.category, 'Categorie') }}</label>
+        <div class="col-md-8">{{ form_widget(form.category) }}</div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">{{ form_label(form.nbPlayers, 'Nombre de joueurs') }}</label>
+        <div class="col-md-8">{{ form_widget(form.nbPlayers) }}</div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-md-4 col-form-label">{{ form_label(form.note, 'Note (de 1 à 10)') }}</label>
+        <div class="col-md-8">{{ form_widget(form.note) }}</div>
+    </div>
+    <button type="submit" class="btn btn-outline-primary mt-5 mb-5">{{ button_label|default('Enregistrer') }}</button>
 </div>
-    <button type="button" class="btn btn-outline-primary">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

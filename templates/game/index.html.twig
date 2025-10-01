@@ -3,6 +3,7 @@
 {% block title %}Listes de jeux{% endblock %}
 
 {% block body %}
+    {% include 'navbar.html.twig' %}
     <div class="bandeau">
         <h1 class="text-center mt-5 mb-5">Liste des jeux</h1>
         <a class="text-center mb-5" href="{{ path('app_game_new') }}"><i class="bi bi-plus-circle"></i></a>
@@ -13,11 +14,11 @@
             <tr>
                 {# <th>Id</th> #}
                 <th>Nom</th>
-                <th>Durée de la partie</th>
+                <th>Durée de la partie (en minutes)</th>
                 <th>Dernière date jouée</th>
                 <th>Catégorie</th>
                 <th>Nb de joueurs</th>
-                <th>Note</th>
+                <th>Note (sur 10)</th>
                 {# <th>actions</th> #}
             </tr>
         </thead>
@@ -25,10 +26,10 @@
         {% for game in games %}
             <tr>
                 {# <td>{{ game.id }}</td> #}
-                <td>{{ game.name }}</td>
+                <td>{{ game.name | capitalize }}</td>
                 <td>{{ game.duration }}</td>
                 <td>{{ game.lastDatePlayed ? game.lastDatePlayed|date('d-m-Y') : '' }}</td>
-                <td>{{ game.category }}</td>
+                <td>{{ game.category | capitalize }}</td>
                 <td>{{ game.nbPlayers }}</td>
                 <td>{{ game.note }}</td>
                 {# <td>

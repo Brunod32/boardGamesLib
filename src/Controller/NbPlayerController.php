@@ -47,6 +47,7 @@ final class NbPlayerController extends AbstractController
     {
         return $this->render('nb_player/show.html.twig', [
             'nb_player' => $nbPlayer,
+            'players_label' => $nbPlayer->getPlayersLabel(),
         ]);
     }
 

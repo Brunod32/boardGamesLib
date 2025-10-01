@@ -16,6 +16,19 @@ class NbPlayerRepository extends ServiceEntityRepository
         parent::__construct($registry, NbPlayer::class);
     }
 
+    /**
+     * Trouve les NbPlayer correspondant à un nombre de joueurs donné.
+     */
+    public function findByPlayerCount(int $playerCount): array
+    {
+        return $this->createQueryBuilder('n')
+            ->andWhere('n.minPlayers <= :count')
+            ->andWhere('(n.maxPlayers IS NULL OR n.maxPlayers >= :count)')
+            ->setParameter('count', $playerCount)
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return NbPlayer[] Returns an array of NbPlayer objects
     //     */
