@@ -30,3 +30,52 @@ body {
 .containerForm {
   max-width: 500px;
 }
+
+form {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+form > select {
+  border-radius: 50px;
+  padding: 5px 10px;
+}
+
+/****** Décalage l'icône du select ******/
+/* 1. Conteneur pour positionner l'icône */
+.custom-select-wrapper {
+  position: relative; /* Clé pour positionner l'icône à l'intérieur */
+  display: inline-block; /* S'assure qu'il ne prend que l'espace nécessaire */
+}
+
+/* 2. Le Select lui-même */
+.custom-select-wrapper select {
+  /* Styles pour la forme (arrondi, padding) */
+  border-radius: 50px;
+  padding: 5px 10px;
+
+  /* Le 'padding-right' clé pour laisser de la place à notre icône personnalisée */
+  padding-right: 35px; /* Augmentez cette valeur pour plus d'espace */
+
+  /* Masque l'icône par défaut du navigateur */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Optionnel : supprime le bouton d'effacement dans IE */
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+/* 3. L'icône personnalisée */
+.custom-select-wrapper .custom-select-icon {
+  position: absolute;
+  top: 50%; /* Centre verticalement */
+  right: 15px; /* Déplace-la pour qu'elle soit dans l'espace que vous avez créé */
+  transform: translateY(-50%); /* Ajustement précis du centrage vertical */
+  pointer-events: none; /* Important : permet de cliquer sur le select même si on clique sur l'icône */
+  color: #333; /* Couleur de votre icône */
+}
+/****** Fin décalage l'icône du select ******/
